@@ -1,3 +1,9 @@
+'use client'
+
+import { useEffect, useState } from "react";
+import styles from "./index.module.css"
+
+
 type Restaurant = {
     id: string;
     name: string;
@@ -22,14 +28,34 @@ type Restaurant = {
     data: Restaurant[];
   };
 
-export const Card = (props: RestaurantListProps) => {
+const Card = (props: RestaurantListProps) => {
     const { data } = props;
+
+    const [filterData, setFilterData] = useState<Restaurant[]>(data)
+
+    const topRatedList = () => {
+        const res = data.filter((rating: any) => rating?.avgRating > 4.3)
+        setFilterData(res);
+    }
+
+    useEffect(() => {
+
+    }, [filterData])
    
   return (
+
    
     <>
-        {data.map((res: any) => (
-            <div key={res?.id} className="card bg-base-100 w-86 shadow-sm m-4 h-100">
+    <div>
+    <button className="btn btn-accent m-5" 
+    onClick={topRatedList}
+    >Top Rated Restuarnts</button>
+
+    </div>
+    <div className={`flex flex-wrap gap-4 `}>
+      
+        {filterData.map((res: any) => (
+            <div key={res?.id} className={`card bg-base-100 w-86 shadow-sm m-4 h-100 ${styles.cardDiv}`}>
             <figure>
             <img
               src={res?.imageURL}
@@ -39,8 +65,8 @@ export const Card = (props: RestaurantListProps) => {
             <h1 className="card-title">{res?.name}</h1>
             <p>{res?.cuisines[0]}</p>
           <h4>{res?.area}</h4>
-          <h4>{res?.avgRating}</h4>
-          <h4>{res?.totalRatings}</h4>
+          <h4>{res?.avgRating} stars</h4>
+          <h4>{res?.totalRatings} Ratings</h4>
             <div className="card-actions justify-center">
               <button className="btn btn-primary">Buy Now</button>
             </div>
@@ -48,9 +74,12 @@ export const Card = (props: RestaurantListProps) => {
           </div>
 
         ))}
+        </div>
         
     
   </>
   
   )
 }
+
+export default Card;

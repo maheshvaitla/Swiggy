@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Navbar() {
+const Navbar = ()=> {
   return (
     <div className="navbar bg-base-500 shadow-sm bg-amber-500">
     <div className="flex-1 flex">
@@ -58,3 +58,5 @@ export default function Navbar() {
   </div>
   );
 }
+
+export default Navbar;
