@@ -1,20 +1,56 @@
-export const Card = () => {
+type Restaurant = {
+    id: string;
+    name: string;
+    image: string;
+    locality: string;
+    area: string;
+    costForTwo: string;
+    cuisines: string[];
+    avgRating: number;
+    totalRatings: string;
+    availability?: {
+      nextCloseTime: string;
+      opened: boolean;
+    };
+    badges?: string[];
+    discount?: string;
+    imageURL?: string;
+  };
+
+
+  type RestaurantListProps = {
+    data: Restaurant[];
+  };
+
+export const Card = (props: RestaurantListProps) => {
+    const { data } = props;
+   
   return (
    
-    <div className="card bg-base-100 w-96 shadow-sm m-4">
-    <figure>
-      <img
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-        alt="Shoes" />
-    </figure>
-    <div className="card-body bg-orange-100">
-      <div className="card-title">Card Title</div>
-      <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-      <div className="card-actions justify-end">
-        <button className="btn btn-primary">Buy Now</button>
-      </div>
-    </div>
-  </div>
+    <>
+        {data.map((res: any) => (
+            <div key={res?.id} className="card bg-base-100 w-86 shadow-sm m-4 h-100">
+            <figure>
+            <img
+              src={res?.imageURL}
+              alt="Shoes" />
+          </figure>
+          <div className="card-body bg-orange-100 p-2 h-55">
+            <h1 className="card-title">{res?.name}</h1>
+            <p>{res?.cuisines[0]}</p>
+          <h4>{res?.area}</h4>
+          <h4>{res?.avgRating}</h4>
+          <h4>{res?.totalRatings}</h4>
+            <div className="card-actions justify-center">
+              <button className="btn btn-primary">Buy Now</button>
+            </div>
+          </div>
+          </div>
+
+        ))}
+        
+    
+  </>
   
   )
 }
