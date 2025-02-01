@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./index.module.css"
+import Loader from "../Loader";
 
 
 type Restaurant = {
@@ -31,7 +32,19 @@ type Restaurant = {
 const Card = (props: RestaurantListProps) => {
     const { data } = props;
 
-    const [filterData, setFilterData] = useState<Restaurant[]>(data)
+    const [filterData, setFilterData] = useState<Restaurant[]>([])
+
+
+    useEffect(() =>{
+      fetchData()
+    }, [])
+
+    const fetchData = async () => {
+      const result = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9334382&lng=77.56086719999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+      const json = await result.json();
+      setFilterData(data);
+
+    }
 
     const topRatedList = () => {
         const res = data.filter((rating: any) => rating?.avgRating > 4.3)
@@ -42,9 +55,7 @@ const Card = (props: RestaurantListProps) => {
 
     }, [filterData])
    
-  return (
-
-   
+  return filterData.length === 0 ? <Loader /> : (
     <>
     <div>
     <button className="btn btn-accent m-5" 
