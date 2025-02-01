@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.css"
 import Loader from "../Loader";
+import Search from "../Search";
 
 
 type Restaurant = {
@@ -33,6 +34,7 @@ const Card = (props: RestaurantListProps) => {
     const { data } = props;
 
     const [filterData, setFilterData] = useState<Restaurant[]>([])
+    const [searchdata, setSearchdata] = useState<Restaurant[]>([])
 
 
     useEffect(() =>{
@@ -43,6 +45,7 @@ const Card = (props: RestaurantListProps) => {
       const result = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9334382&lng=77.56086719999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const json = await result.json();
       setFilterData(data);
+      setSearchdata(data);
 
     }
 
@@ -51,21 +54,27 @@ const Card = (props: RestaurantListProps) => {
         setFilterData(res);
     }
 
+    const searchFunction = (searchData: any) =>{
+      const res = data.filter((data: any) => data?.name.toLowerCase().includes(searchData.toLowerCase()))
+        setSearchdata(res);
+    }
+
     useEffect(() => {
 
     }, [filterData])
    
   return filterData.length === 0 ? <Loader /> : (
     <>
-    <div>
-    <button className="btn btn-accent m-5" 
-    onClick={topRatedList}
-    >Top Rated Restuarnts</button>
-
+    <div className="flex justify-between">
+        <Search  searchFunction={searchFunction} />
+        <div>
+          <button className="btn btn-accent m-5" 
+              onClick={topRatedList}>Top Rated Restuarnts</button>
+        </div>
     </div>
     <div className={`flex flex-wrap gap-4 `}>
       
-        {filterData.map((res: any) => (
+        {searchdata.map((res: any) => (
             <div key={res?.id} className={`card bg-base-100 w-86 shadow-sm m-4 h-100 ${styles.cardDiv}`}>
             <figure>
             <img
@@ -86,6 +95,9 @@ const Card = (props: RestaurantListProps) => {
 
         ))}
         </div>
+        {searchdata.length === 0 && (
+          <h1>No Results Found</h1>
+        )}
         
     
   </>
