@@ -20,12 +20,11 @@ const Navbar = ()=> {
     </div>
     <div className="flex-none">
       <div className="dropdown dropdown-end">
-        <button className="btn btn-soft btn-primary mx-2">Home</button>
-        <></>
+        <button className="btn btn-soft btn-primary mx-2"><Link href="/">Home</Link></button>
         <button className="btn btn-soft btn-primary mx-2"><Link href="/About">About Us</Link></button>
         <button className="btn btn-soft btn-primary mx-2">Contact Us</button>
         <button className="btn btn-soft btn-primary mx-2">Cart</button>
-        <div
+        {/* <div
           tabIndex={0}
           className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
           <div className="card-body">
@@ -33,7 +32,7 @@ const Navbar = ()=> {
               <button className="btn btn-primary btn-block">View cart</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="dropdown dropdown-end">
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

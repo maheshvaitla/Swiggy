@@ -75,7 +75,9 @@ const Card = (props: RestaurantListProps) => {
     <div className={`flex flex-wrap gap-4 `}>
       
         {searchdata.map((res: any) => (
-            <div key={res?.id} className={`card bg-base-100 w-86 shadow-sm m-4 h-100 ${styles.cardDiv}`}>
+          
+            <div key={res?.id} className={`card bg-base-100 w-86 shadow-sm m-4 h-100 ${styles.cardDiv}`} 
+            >
             <figure>
             <img
               src={res?.imageURL}
