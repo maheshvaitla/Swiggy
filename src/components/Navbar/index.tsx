@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Navbar = ()=> {
   return (
@@ -20,7 +21,8 @@ const Navbar = ()=> {
     <div className="flex-none">
       <div className="dropdown dropdown-end">
         <button className="btn btn-soft btn-primary mx-2">Home</button>
-        <button className="btn btn-soft btn-primary mx-2">About Us</button>
+        <></>
+        <button className="btn btn-soft btn-primary mx-2"><Link href="/About">About Us</Link></button>
         <button className="btn btn-soft btn-primary mx-2">Contact Us</button>
         <button className="btn btn-soft btn-primary mx-2">Cart</button>
         <div

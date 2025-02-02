@@ -51,7 +51,7 @@ const Card = (props: RestaurantListProps) => {
 
     const topRatedList = () => {
         const res = data.filter((rating: any) => rating?.avgRating > 4.3)
-        setFilterData(res);
+        setSearchdata(res);
     }
 
     const searchFunction = (searchData: any) =>{
