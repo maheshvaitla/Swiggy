@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./index.module.css"
 import Loader from "../Loader";
 import Search from "../Search";
+import Link from "next/link";
 
 
 type Restaurant = {
@@ -72,6 +73,7 @@ const Card = (props: RestaurantListProps) => {
               onClick={topRatedList}>Top Rated Restuarnts</button>
         </div>
     </div>
+    <Link href="/Restuarnt/67"> 
     <div className={`flex flex-wrap gap-4 `}>
       
         {searchdata.map((res: any) => (
@@ -97,6 +99,8 @@ const Card = (props: RestaurantListProps) => {
 
         ))}
         </div>
+        </Link>
+    
         {searchdata.length === 0 && (
           <h1>No Results Found</h1>
         )}
