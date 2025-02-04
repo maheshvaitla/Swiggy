@@ -11,7 +11,6 @@ const Page = () => {
            <Navbar />
            <Grocery />
         </Suspense>
-        
     )
 }
 export default Page;
