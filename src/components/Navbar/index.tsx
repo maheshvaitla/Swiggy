@@ -1,7 +1,14 @@
+'use client'
+
+import useOnlineStatus from '@/utils/useOnlineStatus';
 import Image from 'next/image'
 import Link from 'next/link'
 
 const Navbar = ()=> {
+
+
+  const onlineStatus = useOnlineStatus();
+  
   return (
     <div className="navbar bg-base-500 shadow-sm bg-amber-500">
     <div className="flex-1 flex">
@@ -18,8 +25,10 @@ const Navbar = ()=> {
       }}
     />
     </div>
+    <h1 className=" mx-2">Online Status:  {onlineStatus ? '✅' : '🛑'}</h1>
     <div className="flex-none">
       <div className="dropdown dropdown-end">
+       
         <button className="btn btn-soft btn-primary mx-2"><Link href="/">Home</Link></button>
         <button className="btn btn-soft btn-primary mx-2"><Link href="/About">About Us</Link></button>
         <button className="btn btn-soft btn-primary mx-2">Contact Us</button>

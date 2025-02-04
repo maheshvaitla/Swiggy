@@ -37,7 +37,6 @@ const Card = (props: RestaurantListProps) => {
     const [filterData, setFilterData] = useState<Restaurant[]>([])
     const [searchdata, setSearchdata] = useState<Restaurant[]>([])
 
-
     useEffect(() =>{
       fetchData()
     }, [])
