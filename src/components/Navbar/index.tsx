@@ -32,6 +32,7 @@ const Navbar = ()=> {
         <button className="btn btn-soft btn-primary mx-2"><Link href="/">Home</Link></button>
         <button className="btn btn-soft btn-primary mx-2"><Link href="/About">About Us</Link></button>
         <button className="btn btn-soft btn-primary mx-2">Contact Us</button>
+        <button className="btn btn-soft btn-primary mx-2"><Link href="/Grocery">Grocery Store</Link></button>
         <button className="btn btn-soft btn-primary mx-2">Cart</button>
         {/* <div
           tabIndex={0}
