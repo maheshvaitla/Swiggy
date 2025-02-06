@@ -79,12 +79,12 @@ const Card = (props: RestaurantListProps) => {
           
             <div key={res?.id} className={`card bg-base-100 w-86 shadow-sm m-4 h-100 ${styles.cardDiv}`} 
             >
-            <figure>
+               <figure>
             <img
               src={res?.imageURL}
               alt="Shoes" />
-          </figure>
-          <div className="card-body bg-orange-100 p-2 h-55">
+               </figure>
+                <div className="card-body bg-orange-100 p-2 h-55">
             <h1 className="card-title">{res?.name}</h1>
             <p>{res?.cuisines[0]}</p>
           <h4>{res?.area}</h4>
@@ -93,9 +93,8 @@ const Card = (props: RestaurantListProps) => {
             <div className="card-actions justify-center">
               <button className="btn btn-primary">Buy Now</button>
             </div>
-          </div>
-          </div>
-
+                </div>
+            </div>
         ))}
         </div>
         </Link>
@@ -109,5 +108,16 @@ const Card = (props: RestaurantListProps) => {
   
   )
 }
+
+const withLabel = <P extends object>(Card: React.ComponentType<P>) => {
+  return (props: P) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <Card {...props} />
+      </div>
+    );
+  };
+};
 
 export default Card;
