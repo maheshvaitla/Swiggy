@@ -9,13 +9,12 @@ import useRestuarnatMenu from "../../utils/useRestuarnatMenu"
 const ResturantMenu = () =>{
 
   const resinfo = useRestuarnatMenu();
+  console.log("resinfo", resinfo)
 
     return  resinfo.length === 0 ? <Loader /> : (
         <>
     {resinfo.map((item:any, index: number) => (
         <div className="menu m-auto border-" key={item?.card?.info?.id}>
-            {/* <h1>Name of resturant</h1>
-            <h2>Menu</h2> */}
             <div className="card card-side bg-base-100 shadow-sm h-[180px] w-[850px] ">
              <figure>
              <img

@@ -36,3 +36,21 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 #learnt Tailwind installation
+
+# High Order Component
+
+HOC is function which takes a component as input and returns a component, it diesnt chnage the original component.
+HOC behaves as PURE FUNCTION
+
+# Controlled Components vs UnControlled Components
+
+A Component which is controlled by its parent component is known as controlled Component
+A Component which is controlled by its own component is known as UnControlled Component
+
+# Context API
+
+const UserContext = CreateContext({
+loggedUser: 'mahesh'
+});
+
+const {data} = useContext(UserContext);
