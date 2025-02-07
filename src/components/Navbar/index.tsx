@@ -1,10 +1,13 @@
 'use client'
 
+import { RootState } from '@/store/store';
 import useOnlineStatus from '@/utils/useOnlineStatus';
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSelector } from 'react-redux';
 
 const Navbar = ()=> {
+  const cart = useSelector((store: RootState) => store.cart.items)
 
 
   const onlineStatus = useOnlineStatus();
@@ -33,7 +36,7 @@ const Navbar = ()=> {
         <button className="btn btn-soft btn-primary mx-2"><Link href="/About">About Us</Link></button>
         <button className="btn btn-soft btn-primary mx-2">Contact Us</button>
         <button className="btn btn-soft btn-primary mx-2"><Link href="/Grocery">Grocery Store</Link></button>
-        <button className="btn btn-soft btn-primary mx-2">Cart</button>
+        <button className="btn btn-soft btn-primary mx-2 font-bold text-2xl">Cart- {cart?.length}</button>
         {/* <div
           tabIndex={0}
           className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">

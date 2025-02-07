@@ -3,10 +3,16 @@
 import { useEffect, useState } from "react";
 import Loader from "../Loader";
 import useRestuarnatMenu from "../../utils/useRestuarnatMenu"
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { addItem } from "@/store/cartSlice";
 
 
 
 const ResturantMenu = () =>{
+  const cart = useSelector((store: RootState) => store.cart.items)
+  const dispatch = useDispatch();
+  console.log("items", cart.length);
 
   const resinfo = useRestuarnatMenu();
   console.log("resinfo", resinfo)
@@ -28,7 +34,7 @@ const ResturantMenu = () =>{
     <h2 className="card-title">{item?.card?.info?.ratings?.aggregatedRating?.rating}</h2>
     <p>{item?.card?.info?.description}</p>
     <div className="card-actions justify-center">
-      <button className="btn btn-primary">ADD</button>
+      <button className="btn btn-primary" onClick={() => dispatch(addItem(item?.card?.info?.name))}>ADD</button>
     </div>
   </div>
 </div>
