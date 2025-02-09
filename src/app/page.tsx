@@ -7,9 +7,6 @@ import { Provider } from "react-redux"
 
 export default function Home() {
 
-  
-  
-
   return (
     <>
       <Navbar />
